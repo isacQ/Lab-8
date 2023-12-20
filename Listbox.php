@@ -3,12 +3,7 @@
        <title>List box</title>
     </head>
 <body>
-<?php
-$item = $_GET['items'];
-if(!is_array($item)){
-    $item = array();
-} 
-?>
+
 <script>
     function moveElements()
     {
@@ -45,17 +40,14 @@ if(!is_array($item)){
 
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="GET">
     <select name="items[]" id="selected" multiple></select><br />
-    <button onclick = "result('items')">Buy</button>
+    <input type="submit" name="s" value="Get" />
     </form>
-     
-
-
-<?php 
-function result($item)
-{   
-    $description = join(' ', $item);
-    echo "You got \"{$description}\" fruits";
-}
-?>
+    <?php
+    if(array_key_exists('s',$_GET))
+    {
+        $description = join(' ', $_GET['items']);
+        echo "You got \"{$description}\"";
+    }
+    ?>
 </body>
 </html>
